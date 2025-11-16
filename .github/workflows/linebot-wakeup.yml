@@ -1,0 +1,33 @@
+name: Line BOT Wake-Up
+
+on:
+  schedule:
+    # Run every 6 hours
+    - cron: '0 */6 * * *'
+  
+  # Allow manual trigger
+  workflow_dispatch:
+
+jobs:
+  wake-up-bot:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Send message to Line BOT
+        run: |
+          curl -X POST https://api.line.me/v2/bot/message/push \
+            -H 'Content-Type: application/json' \
+            -H "Authorization: Bearer ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}" \
+            -d '{
+              "to": "${{ secrets.LINE_USER_ID }}",
+              "messages": [{
+                "type": "text",
+                "text": "${{ secrets.MESSAGE_CONTENT }}"
+              }]
+            }'
+      
+      - name: Log wake-up activity
+        run: |
+          echo "[$(date)] Line BOT wake-up message sent successfully"
+          echo "Target User: ${{ secrets.LINE_USER_ID }}"
+          echo "Message: ${{ secrets.MESSAGE_CONTENT }}"
