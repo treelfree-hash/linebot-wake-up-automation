@@ -3,9 +3,7 @@ name: Line BOT Wake-Up
 on:
   schedule:
     # Run every 6 hours
-    - cron: '0 */* * * *'
-  
-  # Allow manual trigger
+    - cron: '0 * * * *'  # Runs every hour at minute 0  # Allow manual trigger
   workflow_dispatch:
 
 jobs:
