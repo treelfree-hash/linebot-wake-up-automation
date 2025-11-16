@@ -1,0 +1,16 @@
+{
+  "linebot": {
+    "channel_access_token": "YOUR_LINE_CHANNEL_ACCESS_TOKEN_HERE",
+    "user_id": "YOUR_LINE_USER_ID_HERE",
+    "message_content": "Keep alive ping!"
+  },
+  "schedule": {
+    "interval_hours": 6,
+    "cron_expression": "0 */6 * * *",
+    "description": "Run every 6 hours"
+  },
+  "notes": {
+    "how_to_get_channel_access_token": "Go to Line Developers Console -> Select your bot -> Messaging API settings -> Copy Channel access token",
+    "how_to_get_user_id": "Add your bot to Line account -> Send a message to your bot -> Your User ID will be displayed in webhook event"
+  }
+}
